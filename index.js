@@ -8,6 +8,12 @@ function getState(track_id,carrier_id){
             return response.json()
         }
     ).then(function(json){
+        let length = json.progresses.length;
+        
+        for(let i=length;i>0;i--){
+            console.log(json.progresses[i])
+        }
+        
         
     })
 }
