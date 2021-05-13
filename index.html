@@ -8,18 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-    <select name="delivery" class="delivery_js">
-    <option value="kr.epost" >우체국 택배</option>
-    <option value="kr.hanjin">한진택배</option>
-    <option value="kr.homepick">홈픽</option>
-    <option value="kr.logen">로젠택배</option>
-    <option value="kr.lotte">롯데택배</option>
-    <option value="kr.cjlogistics">CJ대한통운</option>
-    <option value="de.dhl">DHL</option>
-    <option value="us.fedex">Fedex</option>
-    </select>
-    <input class="track_id">
-    <button class="track_btn"></button>
+    <div class="search">
+        <select name="delivery" class="delivery_js">
+            <option value="kr.epost" >우체국 택배</option>
+            <option value="kr.hanjin">한진택배</option>
+            <option value="kr.homepick">홈픽</option>
+            <option value="kr.logen">로젠택배</option>
+            <option value="kr.lotte">롯데택배</option>
+            <option value="kr.cjlogistics">CJ대한통운</option>
+            <option value="de.dhl">DHL</option>
+            <option value="us.fedex">Fedex</option>
+            </select>
+            <input class="track_id">
+            <button class="track_btn">Search</button>
+    </div>
+    <div class="list">
+        <ul class="listUl"></ul>
+    </div>
     <script src="./index.js"></script>
 </body>
 
