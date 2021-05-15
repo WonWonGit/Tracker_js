@@ -1,0 +1,25 @@
+.search{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+input[type="text"]{
+    width: 300px;   
+    height: 30px;
+    font-size: medium;
+    margin: 0 10px;
+}
+
+.track_btn{
+    background-color: #325288;
+    color:#f8f5f1;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.track_btn:hover{
+    background-color: #2978b5;
+    cursor: pointer;
+    transition: .5s;
+}
