@@ -40,9 +40,6 @@ select {
     appearance: none;
     font-size: 15px;
 }
-#none{
-    
-}
-#block{
-    display: block;
+.hide {
+    display: none;
 }

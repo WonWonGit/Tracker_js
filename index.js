@@ -4,7 +4,6 @@ const list = document.querySelector(".listUl");
 const currentState = document.querySelector(".currentState");
 const detail = document.querySelector(".detail");
 
-
 let hide = true;
 
 function getState(track_id,carrier_id){
@@ -16,7 +15,8 @@ function getState(track_id,carrier_id){
     ).then(function(json){
         loadInfo(json)
         currentInfo(json)
-    })
+    }
+    )
 }
 
 function loadInfo(json){
@@ -44,7 +44,9 @@ function loadInfo(json){
             tdTime.textContent = `${year}.${month<10 ? `0${month}` : month}.${date_t < 10 ? `0${date_t}` : date_t} ${weeks[day]} ${hour < 10 ? `0${hour}`: hour}:${min < 10 ? `0${min}` : min}`;
 
             var tr = document.createElement("tr");
-            tr.setAttribute("class",length-i);
+            if(length-i > 4){
+                tr.setAttribute("class","hide");
+            }
             
             var td_time = document.createElement("td");
             var td_status = document.createElement("td");
@@ -58,10 +60,12 @@ function loadInfo(json){
             tr.appendChild(td_status);
             tr.appendChild(td_location);
 
-           var table_info = document.getElementsByTagName("tbody")[0];
-           table_info.appendChild(tr);
+            var table_info = document.getElementsByTagName("tbody")[0];
+            table_info.appendChild(tr);
+            
         }
-}
+}   
+
 
 function currentInfo(json){
     const from = json.from['address'];
@@ -75,10 +79,24 @@ function getTrackId(){
     console.log(track_id, carrier_id);
     getState(track_id,carrier_id);
 }   
- 
-function handleDetailBtn(){
-    hide = false;
+
+
+function handleHide(){
+    const tableHide = document.getElementsByClassName('hide');
+    if(hide){
+        for(let i=0;i<tableHide.length;i++){
+            tableHide[i].setAttribute("style","display:table-row;");
+        }
+        hide = false;
+        detail.innerHTML = '간략히보기';
+    }else{
+        for(let i=0;i<tableHide.length;i++){
+            tableHide[i].setAttribute("style","display:none;");
+        }
+        hide = true;
+        detail.innerText = '자세히보기';
+    }
 }
 
+detail.addEventListener("click",handleHide);
 btn.addEventListener("click",getTrackId);
-detail.addEventListener("click",handleDetailBtn);
