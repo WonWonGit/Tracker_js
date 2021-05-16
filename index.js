@@ -2,6 +2,10 @@ const btn = document.querySelector(".track_btn");
 const select = document.querySelector(".delivery_js");
 const list = document.querySelector(".listUl");
 const currentState = document.querySelector(".currentState");
+const detail = document.querySelector(".detail");
+
+
+let hide = true;
 
 function getState(track_id,carrier_id){
     fetch(`https://apis.tracker.delivery/carriers/${carrier_id}/tracks/${track_id}`)
@@ -23,7 +27,7 @@ function loadInfo(json){
             var time = prog[i]['time'];
             var state = prog[i]['status']['text'];
             var location =prog[i]['location']['name'];
-            
+
             var tdTime = document.createTextNode(time);
             var tdState = document.createTextNode(state);
             var tdLocation = document.createTextNode(location);
@@ -40,6 +44,8 @@ function loadInfo(json){
             tdTime.textContent = `${year}.${month<10 ? `0${month}` : month}.${date_t < 10 ? `0${date_t}` : date_t} ${weeks[day]} ${hour < 10 ? `0${hour}`: hour}:${min < 10 ? `0${min}` : min}`;
 
             var tr = document.createElement("tr");
+            tr.setAttribute("class",length-i);
+            
             var td_time = document.createElement("td");
             var td_status = document.createElement("td");
             var td_location = document.createElement("td");
@@ -68,7 +74,11 @@ function getTrackId(){
     const carrier_id = select.options[select.selectedIndex].value;
     console.log(track_id, carrier_id);
     getState(track_id,carrier_id);
+}   
+ 
+function handleDetailBtn(){
+    hide = false;
 }
 
 btn.addEventListener("click",getTrackId);
-
+detail.addEventListener("click",handleDetailBtn);

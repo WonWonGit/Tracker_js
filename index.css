@@ -1,3 +1,7 @@
+body{
+    background-color: #eeeeee;
+    font-family: 'Work Sans', sans-serif;
+}
 .search{
     display: flex;
     justify-content: center;
@@ -22,4 +26,23 @@ input[type="text"]{
     background-color: #2978b5;
     cursor: pointer;
     transition: .5s;
+}
+
+select {
+    width: 200px; /* 원하는 너비설정 */
+    padding: 0 .5em; /* 여백으로 높이 설정 */
+    background: url('./caret-down-solid.svg') no-repeat 95% 50%; /* 네이티브 화살표를 커스텀 화살표로 대체 */
+    background-color: #ffff;
+    border: 1px solid #999;
+    border-radius: 0px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 15px;
+}
+#none{
+    
+}
+#block{
+    display: block;
 }
