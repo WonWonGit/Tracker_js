@@ -14,7 +14,9 @@ function getState(track_id,carrier_id){
         }
     ).then(function(json){
         loadInfo(json)
-        currentInfo(json)
+        const from = json.from;
+        const to = json.to;
+        currentInfo(from,to)
     }
     )
 }
@@ -25,7 +27,7 @@ function loadInfo(json){
     const weeks = new Array('SUN','MON','TUE','WED','THU','FRI','SAT');
         for(let i=length-1;i>0;i--){
             var time = prog[i]['time'];
-            var state = prog[i]['status']['text'];
+            var state = prog[i]['description']
             var location =prog[i]['location']['name'];
 
             var tdTime = document.createTextNode(time);
@@ -67,9 +69,17 @@ function loadInfo(json){
 }   
 
 
-function currentInfo(json){
-    const from = json.from['address'];
-    const to = json.to['address'];
+function currentInfo(from,to){
+    var fromKey = Object.getOwnPropertyNames(from);
+    var toKey = Object.getOwnPropertyNames(to);
+    var fromKey_one = fromKey[0];
+    var toKey_one = toKey[0]
+    const span_from  = document.createElement("span");
+    const span_to  = document.createElement("span");
+    currentState.appendChild(span_from);
+    currentState.appendChild(span_to);
+    span_from.innerHTML = from[fromKey_one];
+    span_to.innerHTML = to[toKey_one];
 }
 
 

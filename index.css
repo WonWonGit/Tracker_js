@@ -43,3 +43,15 @@ select {
 .hide {
     display: none;
 }
+
+table {
+    text-align: center;
+    margin-left:auto; 
+    margin-right:auto;
+    border:solid black 1px;
+    width: 100%;
+}
+table thead{
+    text-align: center;
+}
+
