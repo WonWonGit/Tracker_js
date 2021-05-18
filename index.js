@@ -16,12 +16,13 @@ function getState(track_id,carrier_id){
         loadInfo(json)
         const from = json.from;
         const to = json.to;
-        currentInfo(from,to)
+        currentInfo(from,to,track_id)
     }
     )
 }
 
 function loadInfo(json){
+    detail.style.display = 'block';
     let length = json.progresses.length;
     let prog = json.progresses;
     const weeks = new Array('SUN','MON','TUE','WED','THU','FRI','SAT');
@@ -62,24 +63,43 @@ function loadInfo(json){
             tr.appendChild(td_status);
             tr.appendChild(td_location);
 
-            var table_info = document.getElementsByTagName("tbody")[0];
+            var table_info = document.getElementsByClassName('proTbody')[0];
             table_info.appendChild(tr);
             
         }
 }   
 
 
-function currentInfo(from,to){
+function currentInfo(from,to,track_id){
     var fromKey = Object.getOwnPropertyNames(from);
     var toKey = Object.getOwnPropertyNames(to);
     var fromKey_one = fromKey[0];
-    var toKey_one = toKey[0]
-    const span_from  = document.createElement("span");
-    const span_to  = document.createElement("span");
-    currentState.appendChild(span_from);
-    currentState.appendChild(span_to);
-    span_from.innerHTML = from[fromKey_one];
-    span_to.innerHTML = to[toKey_one];
+    var toKey_one = toKey[0];
+    var fromV = from[fromKey_one];
+    var toV = to[toKey_one];
+    var trackV = track_id;
+
+    var fromTd = document.createTextNode(fromV);
+    var toTd = document.createTextNode(toV);
+    var trackTd = document.createTextNode(trackV);
+
+    var trC = document.createElement("tr");
+
+    var tdFrom = document.createElement("td");
+    var tdTo = document.createElement("td");
+    var tdTrack = document.createElement("td");
+
+    tdFrom.appendChild(fromTd);
+    tdTo.appendChild(toTd);
+    tdTrack.appendChild(trackTd);
+
+    trC.appendChild(tdTrack);
+    trC.appendChild(tdFrom);
+    trC.appendChild(tdTo);
+
+
+    var currentTable = document.getElementsByClassName('currentTbody')[0];
+    currentTable.appendChild(trC);
 }
 
 

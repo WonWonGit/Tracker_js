@@ -23,14 +23,30 @@
             <input type="text" class="track_id">
             <button class="track_btn">Search</button>
     </div>
-    <div class="currentState"></div>
+    <div class="currentState">
+        <table class="currentTable">
+            <thead>
+                <th style="width:30%;">운송장번호</th>
+                <th style="width:30%;">보내는 분</th>
+                <th style="width:30%;">받으시는 분</th>
+            </thead>
+            <tbody class="currentTbody"></tbody>
+        </table>
+    </div>
+    <div class="icon">
+        <div class=""><img src="./img/delivery-man.png"/> </div>
+        <div><img src="./img/delivery-truck.png"/></div>
+        <div><img src="./img/post-office.png"></div>
+        <div><img src="./img/delivery-truck.png"/></div>
+        <div><img src="./img/delivery-box.png"/></div>
+    </div>
     <table class="table">
         <thead>
             <th style="width:30%;">처리일시</th>
             <th style="width:30%;">단계</th>
             <th style="width:30%;">위치</th>
         </thead>
-        <tbody id="tbody_js1">
+        <tbody class="proTbody" id="tbody_js1">
             <td></td>
         </tbody>
     </table>

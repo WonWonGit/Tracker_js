@@ -6,6 +6,7 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 10%;
+    margin-bottom: 5%;
 }
 input[type="text"]{
     width: 300px;   
@@ -48,10 +49,45 @@ table {
     text-align: center;
     margin-left:auto; 
     margin-right:auto;
-    border:solid black 1px;
     width: 100%;
+    border-collapse: collapse;
 }
 table thead{
     text-align: center;
+    background-color: #34656d;
+    color:#eeeeee;
 }
-
+th{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+td{
+    padding: 10px 0 10px 0;
+}
+.icon{
+    margin: 5% 0 5% 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+.icon div{
+    text-align: center;
+}
+.icon img {
+    width:40%;
+}
+.filter{
+    -webkit-filter: opacity(.5) drop-shadow(0 0 0 black);
+    filter: opacity(.5) drop-shadow(0 0 0 black);
+}
+.button_detail{
+    text-align: center;
+}
+.button_detail button{
+    width: 100%;
+    padding: 10px 0 10px 0;
+    background-color: inherit;
+    font-size: 15px;
+    display: none;
+}
