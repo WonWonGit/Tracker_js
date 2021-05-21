@@ -19,11 +19,15 @@ function getState(track_id,carrier_id){
         currentInfo(from,to,track_id)
     }
     )
-}
+    }
+
 
 function loadInfo(json){
-    detail.style.display = 'block';
+    if(json.message){
+        alert(json.message);
+    }else{
     let length = json.progresses.length;
+    if(length>3){detail.style.display = 'block';}
     let prog = json.progresses;
     const weeks = new Array('SUN','MON','TUE','WED','THU','FRI','SAT');
         for(let i=length-1;i>0;i--){
@@ -65,8 +69,10 @@ function loadInfo(json){
 
             var table_info = document.getElementsByClassName('proTbody')[0];
             table_info.appendChild(tr);
+        }
             
         }
+        
 }   
 
 
@@ -127,6 +133,8 @@ function handleHide(){
         detail.innerText = '자세히보기';
     }
 }
+
+
 
 detail.addEventListener("click",handleHide);
 btn.addEventListener("click",getTrackId);
